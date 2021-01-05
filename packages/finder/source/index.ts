@@ -7,5 +7,8 @@
 
 
 // #region exports
+export * from './interfaces';
+
+
 export default pipe;
 // #endregion exports
