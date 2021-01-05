@@ -10,12 +10,12 @@
 
 
 <h2 align="center">
-    plurid' pipes for typescript
+    plurid' pipes
 </h2>
 
 
 <h3 align="center">
-    Utility Pipes for TypeScript Scripts.
+    Utility Pipes for Scripts.
 </h3>
 
 
