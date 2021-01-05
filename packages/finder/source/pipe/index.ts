@@ -1,6 +1,8 @@
 // #region imports
     // #region libraries
     import fs from 'fs';
+
+    import path from 'path';
     // #endregion libraries
 
 
@@ -27,11 +29,35 @@ const resolveOptions = (
 }
 
 
-const finder = async (
+const finder = (
     options?: Partial<FinderOptions>,
 ) => {
     const finderOptions = resolveOptions(options);
 
+    const getAllFiles = (
+        dirPath: string,
+        arrayOfFiles?: string[],
+    ) => {
+        const files = fs.readdirSync(dirPath);
+
+        let arrayOfFilesIn = arrayOfFiles || [];
+
+        files.forEach(function(file) {
+            if (fs.statSync(dirPath + "/" + file).isDirectory()) {
+                arrayOfFilesIn = getAllFiles(dirPath + "/" + file, arrayOfFilesIn);
+            } else {
+                arrayOfFilesIn.push(path.join(__dirname, dirPath, "/", file));
+            }
+        });
+
+        return arrayOfFilesIn;
+    }
+
+    const files = getAllFiles(
+        finderOptions.root,
+    );
+
+    return files;
 }
 // #endregion module
 
