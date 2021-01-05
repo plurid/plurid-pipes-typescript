@@ -46,6 +46,12 @@ It is preferred to install the `pipe` globally
 npm install -g @plurid/pipes.replacer
 ```
 
+and run the script with the global `NODE_PATH`
+
+``` bash
+export NODE_PATH=$(npm root --quiet -g) && node path/to/script.js
+```
+
 
 
 ## Usage
