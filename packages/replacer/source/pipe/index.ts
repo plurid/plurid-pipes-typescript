@@ -10,7 +10,7 @@
     import {
         ReplacerOptions,
         ReplaceOptions,
-    } from '#interfaces/index';
+    } from '~interfaces/index';
     // #endregion external
 // #endregion imports
 

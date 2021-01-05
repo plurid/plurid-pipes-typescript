@@ -9,7 +9,7 @@
     // #region external
     import {
         FinderOptions,
-    } from '#interfaces/index';
+    } from '~interfaces/index';
     // #endregion external
 // #endregion imports
 
