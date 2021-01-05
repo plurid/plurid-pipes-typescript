@@ -49,6 +49,8 @@ npm install -g @plurid/pipes.replacer
 
 ## Usage
 
+Require in script file, generate a `replace` function, use it on files.
+
 ``` javascript
 const replacer = require('../distribution/index').default;
 
@@ -66,6 +68,30 @@ const main = async () => {
 
 
 main();
+```
+
+
+The following options can be passed to the `replacer` and to `replace`
+
+``` typescript
+export interface ReplacerOptions {
+    /**
+     * Regular Expression replacement flags.
+     *
+     * Default: `'gm'`.
+     */
+    flags: string;
+}
+
+
+export interface ReplaceOptions {
+    /**
+     * Return the replaced result.
+     *
+     * Default: `false`.
+     */
+    extract: boolean;
+}
 ```
 
 
