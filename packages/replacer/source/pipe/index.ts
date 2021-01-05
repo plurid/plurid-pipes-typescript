@@ -20,6 +20,15 @@ const replacer = (
                 'utf-8',
             );
 
+            const searchRE = new RegExp(search, 'gm');
+
+            const replaced = fileData.replace(searchRE, replace);
+
+            await fs.writeFile(
+                file,
+                replaced,
+            );
+
             return true;
         } catch (error) {
             console.log('Replacer Pipe Error ::', error);
