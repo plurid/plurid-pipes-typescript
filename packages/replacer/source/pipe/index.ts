@@ -1,7 +1,17 @@
 // #region imports
+    // #region libraries
     import {
         promises as fs,
     } from 'fs';
+    // #endregion libraries
+
+
+    // #region external
+    import {
+        ReplacerOptions,
+        ReplaceOptions,
+    } from '#interfaces/index';
+    // #endregion external
 // #endregion imports
 
 
@@ -10,11 +20,15 @@
 const replacer = (
     search: string,
     replace: string,
-    flags: string = 'gm',
+    options?: Partial<ReplacerOptions>,
 ) => {
+    const replacerOptions: ReplacerOptions = {
+        flags: options?.flags || 'gm',
+    };
+
     return async (
         file: string,
-        extract: boolean = false,
+        options?: Partial<ReplaceOptions>,
     ) => {
         try {
             const fileData = await fs.readFile(
@@ -24,7 +38,7 @@ const replacer = (
 
             const searchRE = new RegExp(
                 search,
-                flags,
+                replacerOptions.flags,
             );
 
             const replaced = fileData.replace(
@@ -32,7 +46,7 @@ const replacer = (
                 replace,
             );
 
-            if (extract) {
+            if (options?.extract) {
                 return replaced;
             }
 
