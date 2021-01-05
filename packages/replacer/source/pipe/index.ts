@@ -14,6 +14,7 @@ const replacer = (
 ) => {
     return async (
         file: string,
+        extract: boolean = false,
     ) => {
         try {
             const fileData = await fs.readFile(
@@ -26,7 +27,14 @@ const replacer = (
                 flags,
             );
 
-            const replaced = fileData.replace(searchRE, replace);
+            const replaced = fileData.replace(
+                searchRE,
+                replace,
+            );
+
+            if (extract) {
+                return replaced;
+            }
 
             await fs.writeFile(
                 file,
