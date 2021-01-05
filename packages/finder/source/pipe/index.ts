@@ -50,11 +50,17 @@ const getAllFiles = (
             }
         }
 
+        const filepath = path.join(
+            rootPath,
+            '/',
+            file,
+        );
+
         if (
-            fs.statSync(rootPath + '/' + file).isDirectory()
+            fs.statSync(filepath).isDirectory()
         ) {
             arrayOfFilesIn = getAllFiles(
-                rootPath + '/' + file,
+                filepath,
                 options,
                 arrayOfFilesIn,
             );
@@ -67,7 +73,7 @@ const getAllFiles = (
             }
 
             arrayOfFilesIn.push(
-                path.join(__dirname, rootPath, '/', file),
+                filepath,
             );
         }
     });
