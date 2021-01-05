@@ -83,22 +83,22 @@ const rootedFiles = finder({
 
 ## Packages
 
-<a target="_blank" href="https://www.npmjs.com/package/@plurid/finder">
-    <img src="https://img.shields.io/npm/v/@plurid/finder.svg?logo=npm&colorB=1380C3&style=for-the-badge" alt="Version">
+<a target="_blank" href="https://www.npmjs.com/package/@plurid/pipes.finder">
+    <img src="https://img.shields.io/npm/v/@plurid/pipes.finder.svg?logo=npm&colorB=1380C3&style=for-the-badge" alt="Version">
 </a>
 
-[@plurid/finder][finder] • files finder pipe
+[@plurid/pipes.finder][pipes.finder] • files finder pipe
 
-[finder]: https://github.com/plurid/finder-typescript/tree/master/packages/finder
+[pipes.finder]: https://github.com/plurid/plurid-pipes-typescript/tree/master/packages/finder
 
 
-<a target="_blank" href="https://www.npmjs.com/package/@plurid/replacer">
+<a target="_blank" href="https://www.npmjs.com/package/@plurid/pipes.replacer">
     <img src="https://img.shields.io/npm/v/@plurid/replacer.svg?logo=npm&colorB=1380C3&style=for-the-badge" alt="Version">
 </a>
 
-[@plurid/replacer][replacer] • content replacer pipe
+[@plurid/pipes.replacer][pipes.replacer] • content replacer pipe
 
-[replacer]: https://github.com/plurid/replacer-typescript/tree/master/packages/replacer
+[pipes.replacer]: https://github.com/plurid/plurid-pipes-typescript/tree/master/packages/replacer
 
 
 
