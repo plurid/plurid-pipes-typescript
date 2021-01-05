@@ -10,6 +10,7 @@
 const replacer = (
     search: string,
     replace: string,
+    flags: string = 'gm',
 ) => {
     return async (
         file: string,
@@ -20,7 +21,10 @@ const replacer = (
                 'utf-8',
             );
 
-            const searchRE = new RegExp(search, 'gm');
+            const searchRE = new RegExp(
+                search,
+                flags,
+            );
 
             const replaced = fileData.replace(searchRE, replace);
 
