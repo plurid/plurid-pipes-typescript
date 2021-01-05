@@ -7,14 +7,18 @@
 
 
 // #region module
-const replacer = async (
+const replacer = (
     search: string,
     replace: string,
 ) => {
-    return (
+    return async (
         file: string,
     ) => {
         try {
+            const fileData = await fs.readFile(
+                file,
+                'utf-8',
+            );
 
             return true;
         } catch (error) {
