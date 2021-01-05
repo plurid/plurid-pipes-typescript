@@ -15,7 +15,7 @@
 
 
 <h3 align="center">
-    Utility Pipes for Scripts.
+    Utility Pipes for Scripts
 </h3>
 
 

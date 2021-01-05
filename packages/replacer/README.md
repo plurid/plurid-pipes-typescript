@@ -15,13 +15,14 @@
 
 
 <h3 align="center">
-    Utility Pipes for Scripts.
+    Utility Pipes for Scripts
 </h3>
 
 
 <h1 align="center">
     Content Replacer Pipe
 </h1>
+
 
 
 <br />
