@@ -50,8 +50,10 @@ const replacer = (
                 return replaced;
             }
 
+            const target = options?.redirect ?? file;
+
             await fs.writeFile(
-                file,
+                target,
                 replaced,
             );
 

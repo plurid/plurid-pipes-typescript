@@ -16,5 +16,10 @@ export interface ReplaceOptions {
      * Default: `false`.
      */
     extract: boolean;
+
+    /**
+     * Write result to another file.
+     */
+    redirect: string;
 }
 // #endregion module
