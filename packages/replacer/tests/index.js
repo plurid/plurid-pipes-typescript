@@ -17,14 +17,34 @@ const main = async () => {
     // two
     {
         const replace = replacer(
-            `    multi
-            line
-    replace`,
-            `  multi
+        `    multi
         line
-    replaced`,
+replace`,
+        `  multi
+    line
+replaced`,
         );
         const result = await replace(process.cwd() + '/tests/example.test.two');
+        console.log('result', result);
+    }
+
+
+    // two extraction
+    {
+        const replace = replacer(
+        `    multi
+        line
+replace`,
+        `  multi
+    line
+replaced`,
+        );
+        const result = await replace(
+            process.cwd() + '/tests/example.test.two',
+            {
+                extract: true,
+            },
+        );
         console.log('result', result);
     }
 }
