@@ -29,6 +29,10 @@ const build =  {
             sourcemap: true,
         },
     ],
+    external: [
+        'fs',
+        'path',
+    ],
     plugins: [
         typescript({
             typescript: ttypescript,
