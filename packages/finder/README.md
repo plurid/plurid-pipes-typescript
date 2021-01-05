@@ -19,6 +19,11 @@
 </h3>
 
 
+<h4 align="center">
+    File Finder Pipe
+</h4>
+
+
 
 <br />
 
@@ -26,8 +31,53 @@
 
 ### Contents
 
++ [Install](#install)
++ [Usage](#usage)
 + [Packages](#packages)
 + [Codeophon](#codeophon)
+
+
+
+## Install
+
+It is preferred to install the `pipe` globally
+
+``` bash
+npm install -g @plurid/pipes.finder
+```
+
+
+
+## Usage
+
+``` javascript
+// finder-script.js
+const finder = require('@plurid/pipes.finder').default;
+
+
+// all the files in the `process.cwd()` directory
+const allFiles = finder();
+
+// all the files except those containing `'node_modules'` in name
+const filesExclude = finder({
+    exclude: [
+        'node_modules',
+    ],
+});
+
+// all the files with the extension `'.ts'`, except those in `'node_modules'`
+const tsFiles = finder({
+    extension: '.ts', // accepts RegExp
+    exclude: [
+        'node_modules',
+    ],
+});
+
+// all the files from the `'path/to/root'` directory
+const rootedFiles = finder({
+    root: 'path/to/root',
+});
+```
 
 
 

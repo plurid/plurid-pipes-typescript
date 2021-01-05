@@ -19,6 +19,10 @@
 </h3>
 
 
+<h4 align="center">
+    Content Replacer Pipe
+</h4>
+
 
 <br />
 
@@ -26,8 +30,43 @@
 
 ### Contents
 
++ [Install](#install)
++ [Usage](#usage)
 + [Packages](#packages)
 + [Codeophon](#codeophon)
+
+
+
+## Install
+
+It is preferred to install the `pipe` globally
+
+``` bash
+npm install -g @plurid/pipes.replacer
+```
+
+
+
+## Usage
+
+``` javascript
+const replacer = require('../distribution/index').default;
+
+
+const main = async () => {
+    // obtain a replacer function
+    const replace = replacer(
+        'searchString',
+        'replaceString',
+    );
+
+    // use the replacer by passing paths to files
+    await replace('/path/to/file');
+}
+
+
+main();
+```
 
 
 
