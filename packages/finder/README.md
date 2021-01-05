@@ -93,7 +93,7 @@ const rootedFiles = finder({
 
 
 <a target="_blank" href="https://www.npmjs.com/package/@plurid/pipes.replacer">
-    <img src="https://img.shields.io/npm/v/@plurid/replacer.svg?logo=npm&colorB=1380C3&style=for-the-badge" alt="Version">
+    <img src="https://img.shields.io/npm/v/@plurid/pipes.replacer.svg?logo=npm&colorB=1380C3&style=for-the-badge" alt="Version">
 </a>
 
 [@plurid/pipes.replacer][pipes.replacer] • content replacer pipe
