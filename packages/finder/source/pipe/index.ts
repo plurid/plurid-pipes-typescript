@@ -22,42 +22,77 @@ const resolveOptions = (
     const resolvedOptions: FinderOptions = {
         root: options?.root ?? process.cwd(),
         extension: options?.extension || '',
-        exclude: options?.exclude || [],
+        exclude: options?.exclude
+            ? Array.isArray(options.exclude)
+                ? options.exclude : []
+            : [],
     };
 
     return resolvedOptions;
 }
 
 
+const getAllFiles = (
+    rootPath: string,
+    options: FinderOptions,
+    arrayOfFiles?: string[],
+) => {
+    const files = fs.readdirSync(rootPath);
+
+    let arrayOfFilesIn = arrayOfFiles || [];
+
+    files.forEach((file) => {
+        if (options.exclude.length > 0) {
+            for (const excluder of options.exclude) {
+                if (file.includes(excluder)) {
+                    return;
+                }
+            }
+        }
+
+        if (
+            fs.statSync(rootPath + '/' + file).isDirectory()
+        ) {
+            arrayOfFilesIn = getAllFiles(
+                rootPath + '/' + file,
+                options,
+                arrayOfFilesIn,
+            );
+        } else {
+            if (options.extension) {
+                const extname = path.extname(file);
+                if (!extname.match(options.extension)) {
+                    return;
+                }
+            }
+
+            arrayOfFilesIn.push(
+                path.join(__dirname, rootPath, '/', file),
+            );
+        }
+    });
+
+    return arrayOfFilesIn;
+}
+
+
 const finder = (
     options?: Partial<FinderOptions>,
-) => {
-    const finderOptions = resolveOptions(options);
+): string[] => {
+    try {
+        const finderOptions = resolveOptions(options);
 
-    const getAllFiles = (
-        dirPath: string,
-        arrayOfFiles?: string[],
-    ) => {
-        const files = fs.readdirSync(dirPath);
+        const files = getAllFiles(
+            finderOptions.root,
+            finderOptions,
+        );
 
-        let arrayOfFilesIn = arrayOfFiles || [];
+        return files;
+    } catch (error) {
+        console.log('Finder Pipe Error ::', error);
 
-        files.forEach(function(file) {
-            if (fs.statSync(dirPath + "/" + file).isDirectory()) {
-                arrayOfFilesIn = getAllFiles(dirPath + "/" + file, arrayOfFilesIn);
-            } else {
-                arrayOfFilesIn.push(path.join(__dirname, dirPath, "/", file));
-            }
-        });
-
-        return arrayOfFilesIn;
+        return [];
     }
-
-    const files = getAllFiles(
-        finderOptions.root,
-    );
-
-    return files;
 }
 // #endregion module
 
