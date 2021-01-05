@@ -63,6 +63,22 @@ replaced`,
         );
         console.log('result', result);
     }
+
+
+    // three redirect
+    {
+        const replace = replacer(
+            'one',
+            'aaa',
+        );
+        const result = await replace(
+            process.cwd() + '/tests/example.three.test',
+            {
+                redirect: process.cwd() + '/tests/example.three.test.redirect',
+            },
+        );
+        console.log('result', result);
+    }
 }
 
 
