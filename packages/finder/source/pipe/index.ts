@@ -22,6 +22,8 @@ const resolveOptions = (
     const resolvedOptions: FinderOptions = {
         root: options?.root ?? process.cwd(),
         extension: options?.extension || '',
+        startsWith: options?.startsWith || '',
+        endsWith: options?.endsWith || '',
         exclude: options?.exclude
             ? Array.isArray(options.exclude)
                 ? options.exclude : []
@@ -52,7 +54,7 @@ const getAllFiles = (
 
         const filepath = path.join(
             rootPath,
-            '/',
+            path.sep,
             file,
         );
 
@@ -65,11 +67,29 @@ const getAllFiles = (
                 arrayOfFilesIn,
             );
         } else {
+            let match = false;
+
             if (options.extension) {
                 const extname = path.extname(file);
-                if (!extname.match(options.extension)) {
-                    return;
+                if (extname.match(options.extension)) {
+                    match = true;
                 }
+            }
+
+            if (options.startsWith) {
+                if (file.startsWith(options.startsWith)) {
+                    match = true;
+                }
+            }
+
+            if (options.endsWith) {
+                if (file.endsWith(options.endsWith)) {
+                    match = true;
+                }
+            }
+
+            if (!match) {
+                return;
             }
 
             arrayOfFilesIn.push(
